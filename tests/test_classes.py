@@ -1,4 +1,4 @@
-from src.classes import Category, Product
+from src.classes import Category
 
 
 def test_category_init(category):
@@ -7,6 +7,7 @@ def test_category_init(category):
     assert len(category.products) == 2
     assert Category.category_count == 1
     assert Category.product_count == 2
+
 
 def test_product_init(product):
     assert product.name == "Огурцы"
