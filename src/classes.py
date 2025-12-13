@@ -4,7 +4,7 @@ class Product:
     price: float
     quantity: int
 
-    def __int__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity):
         """Инициализая Product"""
 
         self.name = name
@@ -23,11 +23,11 @@ class Category:
     category_count = 0
     product_count = 0
 
-    def __int__(self, name, description, products):
+    def __init__(self, name, description, products):
         """Инициализация Category"""
 
         self.name = name
         self.description = description
         self.products = products
-        Category.category_count += 0
+        Category.category_count += 1
         Category.product_count += len(products)
