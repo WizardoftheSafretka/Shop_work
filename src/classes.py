@@ -56,19 +56,17 @@ class Category:
     def add_product(self, product: Product):
             """Для добавления товаров в категорию"""
 
-            self.products.append(product)
+            self.__products.append(product)
             Category.product_count += 1
 
     @property
     def products(self):
         """Геттер, который будет выводить список товаров в виде строк"""
 
-        product = ""
+        str_product = ""
         for product in self.__products:
-            product += f"{Product.name}, {Product.price} руб. Остаток: {Product.quantity} шт.\n"
-        return product
-
-
+            str_product += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+        return str_product
 
 
 
