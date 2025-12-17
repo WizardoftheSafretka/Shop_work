@@ -16,5 +16,9 @@ def category():
         products=[
             Product("Огурцы", "Обыкновенные огурцы", 100.0, 1),
             Product("Помироды", "Обыкновенные помидоры", 120.50, 2),
-        ],
+        ]
     )
+
+# @pytest.fixture
+# def new_product():
+#     return Product("Вещь", "Просто вещь",100500.0,1)
