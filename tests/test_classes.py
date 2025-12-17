@@ -41,3 +41,12 @@ def test_add_product(category, product):
 
 def test_products(category):
     assert category.products == "Огурцы, 100.0 руб. Остаток: 1 шт.\nПомироды, 120.5 руб. Остаток: 2 шт.\n"
+
+def test_str_product(product):
+    assert str(product) == "Огурцы, 100.0 руб. Остаток: 1 шт."
+
+def test_add_products(product, product_2):
+    assert product + product_2 == 210.0
+
+def test_category_str(category):
+    assert str(category) == 'Овощи, количество продуктов: 3 шт.'
