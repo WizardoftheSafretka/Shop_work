@@ -16,7 +16,10 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        return self.__price * self.quantity + other.__price * other.quantity
+        if type(self) == type(other):
+            return self.__price * self.quantity + other.__price * other.quantity
+        else:
+            raise TypeError
 
     @classmethod
     def new_product(cls, new_object: dict):
@@ -38,6 +41,44 @@ class Product:
            self.__price = new_price
         else:
             print("Цена не должна быть нулевая или отрицательная")
+
+class Smartphone(Product):
+    name: str
+    description: str
+    price: float
+    quantity: int
+    efficiency: float
+    model: str
+    memory: float
+    color: str
+    
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 efficiency: float, model: str, memory: float, color: str):
+        """Инициалиация Smartphone"""
+
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self. color = color
+
+class LawnGrass(Product):
+    name: str
+    description: str
+    price: float
+    quantity: int
+    country: str
+    germination_period: str
+    color: str
+
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 country: str, germination_period: str, color: str):
+        """Инициалиация LawnGrass"""
+
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
 
 
 
@@ -65,11 +106,14 @@ class Category:
             count += int(product.quantity)
         return f"{self.name}, количество продуктов: {count} шт."
 
-    def add_product(self, product: Product):
+    def add_product(self, other):
             """Для добавления товаров в категорию"""
 
-            self.__products.append(product)
-            Category.product_count += 1
+            if isinstance(other, Product):
+                self.__products.append(other)
+                Category.product_count += 1
+            else:
+                raise TypeError
 
     @property
     def products(self):
