@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 ## Использование:
 
-1. Используйте модуль classes.py для доступа к объектам
+1. Используйте модуль classes.py для доступа к объектам Products (подклассы: Smartphone и LawnGrass) и Category
 2. Используйте модуль utis.py чтения json
 
 ## Автор:
