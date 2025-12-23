@@ -7,6 +7,10 @@ from src.classes import Category, Product
 def product():
     return Product(name="Огурцы", description="Обыкновенные огурцы", price=100.0, quantity=1)
 
+@pytest.fixture
+def product_2():
+    return Product(name="Помидоры", description="Обыкновенные помидоры", price=110.0, quantity=1)
+
 
 @pytest.fixture
 def category():
