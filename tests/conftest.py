@@ -1,6 +1,6 @@
 import pytest
 
-from src.classes import Category, Product
+from src.classes import Category, Product, Smartphone, LawnGrass
 
 
 @pytest.fixture
@@ -23,6 +23,12 @@ def category():
         ]
     )
 
-# @pytest.fixture
-# def new_product():
-#     return Product("Вещь", "Просто вещь",100500.0,1)
+@pytest.fixture
+def smartphone():
+    return Smartphone(name="Xiaomi", description="Обыкновенный Xiaomi", price=10000.0, quantity=1,
+                      efficiency= 512, model = "F5", memory = 512, color = "Черный")
+
+@pytest.fixture
+def lawngrass():
+    return LawnGrass(name="Трава", description="Обыкновенная трава", price=5000.0, quantity=1,
+                      country =  "Россия", germination_period="5 лет", color="Зеленая")

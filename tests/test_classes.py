@@ -1,3 +1,4 @@
+import pytest
 from pyexpat.errors import messages
 
 from src.classes import Category, Product
@@ -50,3 +51,34 @@ def test_add_products(product, product_2):
 
 def test_category_str(category):
     assert str(category) == 'Овощи, количество продуктов: 3 шт.'
+
+def test_smartphone_init(smartphone):
+    assert smartphone.name == "Xiaomi"
+    assert smartphone.description == "Обыкновенный Xiaomi"
+    assert smartphone.price == 10000.0
+    assert smartphone.quantity == 1
+    assert smartphone.efficiency == 512
+    assert smartphone.model == "F5"
+    assert smartphone.memory == 512
+    assert smartphone.color == "Черный"
+
+def test_grass_init(lawngrass):
+    assert lawngrass.name == "Трава"
+    assert lawngrass.description == "Обыкновенная трава"
+    assert lawngrass.price == 5000.0
+    assert lawngrass.quantity == 1
+    assert lawngrass.country == "Россия"
+    assert lawngrass.germination_period == "5 лет"
+    assert lawngrass.color == "Зеленая"
+
+def test_add_product_error(smartphone):
+    with pytest.raises(TypeError):
+        result = smartphone + 1
+
+def test_add_category_error(category):
+    with pytest.raises(TypeError):
+        result = category.add_product(1)
+
+
+
+
