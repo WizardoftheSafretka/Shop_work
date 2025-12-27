@@ -34,7 +34,8 @@ def test_price(capsys, product):
     assert product.price == 1
     product.price = -1
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip() == ('Product(Огурцы, Обыкновенные огурцы, 100.0, 1)\n'
+ 'Цена не должна быть нулевая или отрицательная')
 
 def test_add_product(category, product):
     category.add_product(product)
@@ -78,6 +79,11 @@ def test_add_product_error(smartphone):
 def test_add_category_error(category):
     with pytest.raises(TypeError):
         result = category.add_product(1)
+
+def test_mixin_product(capsys):
+    Product("Помидоры", "Обыкновенные помидоры", 110.0, 1)
+    message = capsys.readouterr()
+    assert message.out.strip() == 'Product(Помидоры, Обыкновенные помидоры, 110.0, 1)'
 
 
 

@@ -12,8 +12,11 @@ class BaseProduct(ABC):
 
 
 class MixinProduct:
+    def __init__(self):
+        print(MixinProduct.__repr__(self))
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.price}, {self.quantity})"
+        return f"{self.__class__.__name__}({self.name}, {self.description}, {self.price}, {self.quantity})"
+
 
 
 class Product(BaseProduct, MixinProduct):
@@ -31,6 +34,7 @@ class Product(BaseProduct, MixinProduct):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        print(repr(self))
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
