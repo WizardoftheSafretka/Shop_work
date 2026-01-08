@@ -85,6 +85,21 @@ def test_mixin_product(capsys):
     message = capsys.readouterr()
     assert message.out.strip() == 'Product(Помидоры, Обыкновенные помидоры, 110.0, 1)'
 
+def test_init_with_zero_quantity():
+    with pytest.raises(ValueError):
+        Product(name="Огурцы", description="Обыкновенные огурцы", price=100.0, quantity=0)
+
+def test_middle_middle_price_product(category):
+    assert category.middle_price_product() == 110.25
+
+def test_middle_middle_price_product_error():
+    error_1 = Category(
+        name="Овощи",
+        description="Обыкновенные овощи",
+        products=[]
+    )
+    assert error_1.middle_price_product() == 0
+
 
 
 

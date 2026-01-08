@@ -33,7 +33,7 @@ class Product(BaseProduct, MixinProduct):
         self.name = name
         self.description = description
         self.__price = price
-        if self.quantity > 0:
+        if quantity > 0:
             self.quantity = quantity
         else:
             raise ValueError("Товар с нулевым количеством не может быть добавлен")
