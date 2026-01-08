@@ -1,16 +1,40 @@
-class Product:
+from abc import ABC, abstractmethod
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+
+class MixinProduct:
+    def __init__(self):
+        print(MixinProduct.__repr__(self))
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, {self.description}, {self.price}, {self.quantity})"
+
+
+
+class Product(BaseProduct, MixinProduct):
     name: str
     description: str
     price: float
     quantity: int
 
+
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """Инициализая Product"""
 
+        super().__init__()
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        print(repr(self))
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
@@ -41,6 +65,7 @@ class Product:
            self.__price = new_price
         else:
             print("Цена не должна быть нулевая или отрицательная")
+
 
 class Smartphone(Product):
     name: str
@@ -123,6 +148,5 @@ class Category:
         for product in self.__products:
             str_product += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return str_product
-
 
 
