@@ -143,7 +143,7 @@ class Category:
             else:
                 raise TypeError
 
-    def middle_price_product(self):
+    def middle_price(self):
         """Метод подсчета среднего ценника всех товаров"""
 
         try:
@@ -161,5 +161,4 @@ class Category:
         for product in self.__products:
             str_product += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return str_product
-
 

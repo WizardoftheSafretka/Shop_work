@@ -90,7 +90,7 @@ def test_init_with_zero_quantity():
         Product(name="Огурцы", description="Обыкновенные огурцы", price=100.0, quantity=0)
 
 def test_middle_middle_price_product(category):
-    assert category.middle_price_product() == 110.25
+    assert category.middle_price() == 110.25
 
 def test_middle_middle_price_product_error():
     error_1 = Category(
@@ -98,7 +98,7 @@ def test_middle_middle_price_product_error():
         description="Обыкновенные овощи",
         products=[]
     )
-    assert error_1.middle_price_product() == 0
+    assert error_1.middle_price() == 0
 
 
 
