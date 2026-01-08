@@ -33,7 +33,10 @@ class Product(BaseProduct, MixinProduct):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if self.quantity > 0:
+            self.quantity = quantity
+        else:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         print(repr(self))
 
     def __str__(self):
@@ -139,6 +142,16 @@ class Category:
                 Category.product_count += 1
             else:
                 raise TypeError
+
+    def middle_price_product(self):
+        """Метод подсчета среднего ценника всех товаров"""
+
+        try:
+            return sum([product.price for product in self.__products]) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+
+
 
     @property
     def products(self):
