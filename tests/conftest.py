@@ -32,3 +32,4 @@ def smartphone():
 def lawngrass():
     return LawnGrass(name="Трава", description="Обыкновенная трава", price=5000.0, quantity=1,
                       country =  "Россия", germination_period="5 лет", color="Зеленая")
+
